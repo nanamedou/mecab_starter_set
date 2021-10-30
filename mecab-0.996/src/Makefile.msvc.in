@@ -1,16 +1,45 @@
-CC = cl.exe
-CXXC = cl.exe
-LINK=link.exe
+﻿
 
-CFLAGS = /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244
-LDFLAGS = /nologo /OPT:REF /OPT:ICF /LTCG /NXCOMPAT /DYNAMICBASE /MACHINE:X86 ADVAPI32.LIB
+# nanamedouによる変更 開始 -----------------------------
+
+# 元のコード-------------------------
+#
+#CC = cl.exe
+#CXXC = cl.exe
+#LINK=link.exe
+#
+#CFLAGS = /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244
+#LDFLAGS = /nologo /OPT:REF /OPT:ICF /LTCG /NXCOMPAT /DYNAMICBASE /MACHINE:X86 ADVAPI32.LIB
+#DEFS =  -D_CRT_SECURE_NO_DEPRECATE -DMECAB_USE_THREAD \
+#        -DDIC_VERSION=@DIC_VERSION@ \
+#        -DVERSION="\"@VERSION@\"" -DPACKAGE="\"mecab\"" \
+#        -DUNICODE -D_UNICODE \
+#        -DMECAB_DEFAULT_RC="\"c:\\Program Files\\mecab\\etc\\mecabrc\""
+#
+#INC = -I. -I..
+#DEL = del
+#
+
+# 変更したコード------------------------------
+# DIC_VERSIONはconfigureファイルから決定
+
+CC = @cl.exe
+CXXC = @cl.exe
+LINK=@link.exe
+
+CFLAGS = /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244 /wd4267 /wd4722 /wd4146
+LDFLAGS = /nologo /OPT:REF /OPT:ICF /LTCG /NXCOMPAT /DYNAMICBASE /MACHINE:X64 ADVAPI32.LIB
 DEFS =  -D_CRT_SECURE_NO_DEPRECATE -DMECAB_USE_THREAD \
-        -DDLL_EXPORT -DHAVE_GETENV -DHAVE_WINDOWS_H -DDIC_VERSION=@DIC_VERSION@ \
-        -DVERSION="\"@VERSION@\"" -DPACKAGE="\"mecab\"" \
+        -DDLL_EXPORT -DHAVE_GETENV -DHAVE_WINDOWS_H -DDIC_VERSION="102" \
+        -DVERSION="\"102\"" -DPACKAGE="\"mecab\"" \
         -DUNICODE -D_UNICODE \
         -DMECAB_DEFAULT_RC="\"c:\\Program Files\\mecab\\etc\\mecabrc\""
+
 INC = -I. -I..
-DEL = del
+DEL = @del
+
+# nanamedouによる変更 終了-----------------------------------------
+
 
 OBJ =   feature_index.obj param.obj  learner.obj string_buffer.obj \
 	char_property.obj         learner_tagger.obj    tagger.obj \
@@ -49,5 +78,17 @@ mecab-test-gen: mecab-test-gen.obj
 libmecab: $(OBJ) libmecab.obj
 	$(LINK) $(LDFLAGS) /out:$@.dll $(OBJ) libmecab.obj /dll
 
+
+# nanamedouによる変更 開始
+
+# 元のコード
+#clean:
+#	$(DEL) *.exe *.obj *.dll *.a *.lib *.o *.exp *.def
+
+# 変更したコード
+
 clean:
-	$(DEL) *.exe *.obj *.dll *.a *.lib *.o *.exp *.def
+	$(DEL) *.exe *.obj *.dll *.a *.lib *.o *.exp *.def *.pdb
+
+# nanamedouによる変更 終了
+
