@@ -27,13 +27,14 @@ CC = @cl.exe
 CXXC = @cl.exe
 LINK=@link.exe
 
-CFLAGS = /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244 /wd4267 /wd4722 /wd4146
+CFLAGS = /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244 /wd4267 /wd4722 /wd4146 /source-charset:utf-8 /execution-charset:utf-8
 LDFLAGS = /nologo /OPT:REF /OPT:ICF /LTCG /NXCOMPAT /DYNAMICBASE /MACHINE:X64 ADVAPI32.LIB
 DEFS =  -D_CRT_SECURE_NO_DEPRECATE -DMECAB_USE_THREAD \
         -DDLL_EXPORT -DHAVE_GETENV -DHAVE_WINDOWS_H -DDIC_VERSION="102" \
         -DVERSION="\"102\"" -DPACKAGE="\"mecab\"" \
         -DUNICODE -D_UNICODE \
-        -DMECAB_DEFAULT_RC="\"c:\\Program Files\\mecab\\etc\\mecabrc\""
+        -DMECAB_DEFAULT_RC="\"c:\\Program Files\\mecab\\etc\\mecabrc\"" \
+		-DMECAB_USE_UTF8_ONLY
 
 INC = -I. -I..
 DEL = @del

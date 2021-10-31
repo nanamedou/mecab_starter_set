@@ -1,8 +1,9 @@
-@rem 変数の定義-------------------------------------------
+﻿@rem 変数の定義-------------------------------------------
 
 @set SRC_DIR=mecab-0.996\src\
 @set BIN_INSTALL_DIR=bin\
 @set LIB_INSTALL_DIR=lib\
+@set BUILD_CLEANUP=1
 
 @rem コマンド実行--------------------------------------------
 
@@ -24,6 +25,9 @@
 @copy "%SRC_DIR%*.lib" %LIB_INSTALL_DIR%. /Y
 
 @rem ソースフォルダに移動しクリーン
+@ if %BUILD_CLEANUP%==1 (
 @cd %SRC_DIR%
-@rem nmake -f Makefile.msvc.in clean
+@nmake -f Makefile.msvc.in clean
 @cd %ROOT_DIR%
+)
+

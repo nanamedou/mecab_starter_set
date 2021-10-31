@@ -1,4 +1,4 @@
-@rem 変数の定義-------------------------------------------
+﻿@rem 変数の定義-------------------------------------------
 
 @rem 32bit用
 @rem set VSVARS_CMD = "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x86
