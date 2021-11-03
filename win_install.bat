@@ -1,4 +1,8 @@
-﻿@rem 変数読み込み
+﻿@rem win_setup.bat
+@rem Copyright (c) 2021, nanamedou
+
+
+@rem 変数読み込み
 @call configure.bat
 
 @rem 復帰用ディレクトリパス
