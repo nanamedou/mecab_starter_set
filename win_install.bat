@@ -1,13 +1,19 @@
-﻿@rem 変数の定義-------------------------------------------
+﻿@rem 変数読み込み
+@call configure.bat
 
-@set SRC_DIR=mecab-0.996\src\
-@set BIN_INSTALL_DIR=bin\
-@set LIB_INSTALL_DIR=lib\
-@set BUILD_CLEANUP=1
-
-@rem コマンド実行--------------------------------------------
-
+@rem 復帰用ディレクトリパス
 @set ROOT_DIR=%CD%
+
+/MACHINE:X64
+
+@if "%BUILD_MODE%"=="X64" (
+@set ADDITIONAL_LDFLAGS=/MACHINE:X64
+) else if "%BUILD_MODE%"=="X86" (
+@set ADDITIONAL_LDFLAGS=/MACHINE:X86
+) else (
+@echo error:BUILD_MODE is incorrect!!
+exit
+)
 
 @rem ソースフォルダに移動しコンパイル
 @cd %SRC_DIR%

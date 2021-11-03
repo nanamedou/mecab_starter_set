@@ -1,13 +1,6 @@
 ﻿
-@rem 変数の定義-------------------------------------------
-
-@set SRC_DIR=mecab-0.996\src\
-@set DIC_SRC_DIR=mecab-ipadic-2.7.0-20070801\
-@set BIN_INSTALL_DIR=bin\
-@set DIC_INSTALL_DIR=bin\dic\
-@set MECAB_DICT_INDEX=%BIN_INSTALL_DIR%mecab-dict-index.exe
-
-@rem コマンド実行--------------------------------------------
+@rem 変数読み込み
+@call configure.bat
 
 @set ROOT_DIR=%CD%
 
