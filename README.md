@@ -2,11 +2,11 @@
 
 ## 概要
 
-mecabのソースをwindowsでコンパイルできるように修正しました。
-コンパイルがしやすいようにファイルを追加・調整しました。
+mecabのソースをwindowsでコンパイルできるように修正しました。  
+コンパイルがしやすいようにファイルを追加・調整しました。  
 標準ではutf-8で入出力できるようにしています。
 
-# 利用方法(例)
+## 利用方法(例)
 
 環境: win10 + MSVC2019ビルドツールインストール済み + コマンドプロンプト
 
@@ -29,6 +29,25 @@ mecabのソースをwindowsでコンパイルできるように修正しまし�
 天気    名詞,一般,*,*,*,*,天気,テンキ,テンキ
 EOS
 ```
+
+configure.batを書き換えることで保存するフォルダやソースの位置を変更できます。特に、BUILD_MODEを変更することで32bitでビルドできます。  
+
+## 実行できないときの対処法
+
+win_setup.bin の実行時に以下のメッセージが出る。  
+```
+'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' is not recognized as an internal or external command,
+operable program or batch file.
+```
+
+configure.bat内のVSVARS_CMD_X64とVSVARS_CMD_X86を修正してください。
+vcvarsallはMSVCビルドツール等に含まれています。別途インストールしてください。  
+configure.bat変更例:
+```
+VSVARS_CMD_X64="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build" x64
+VSVARS_CMD_X86="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build" x86
+```
+
 
 ## 内容物
 
